@@ -14,7 +14,7 @@ app.component('helloComponent', {
     </div>
     `,
   bindings: {
-    message: '=',
-    onMessageChange: '='
+    message: '<',
+    onMessageChange: '<'
   }
 })
