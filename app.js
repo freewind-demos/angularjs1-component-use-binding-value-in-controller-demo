@@ -1,52 +1,20 @@
 const app = angular.module('app', [])
+
 app.controller('MyController', function ($scope) {
-    $scope.count = 5
+  $scope.message = 'Hello'
+  $scope.onMessageChange = (message) => {
+    console.log("Message changed to:", message);
+  }
 })
 
-app.component('componentCounter', {
-    template: `
+app.component('helloComponent', {
+  template: `
     <div>
-        <span>Number: {{ $ctrl.count }}</span>
-        <button ng-click="$ctrl.increase()">+</button>
-        <button ng-click="$ctrl.decrease()">-</button>
+        Message: <input type="text" ng-model="$ctrl.message" ng-change="$ctrl.onMessageChange($ctrl.message)"/>
     </div>
     `,
-    bindings: {
-        count: '='
-    },
-    controller: function () {
-        this.increase = function () {
-            this.count += 1
-        }
-        this.decrease = function () {
-            this.count -= 1
-        }
-    }
-
-})
-
-app.directive('directiveCounter', function () {
-    return {
-        restrict: 'E',
-        template: `
-         <div>
-             <span>Number: {{ $ctrl.count }}</span>
-             <button ng-click="$ctrl.increase()">+</button>
-             <button ng-click="$ctrl.decrease()">-</button>
-         </div>
-         `,
-        scope: {},
-        bindToController: {
-            count: '='
-        },
-        controller: function () {
-            this.increase = function () {
-                this.count += 1
-            }
-            this.decrease = function () {
-                this.count -= 1
-            }
-        },
-        controllerAs: '$ctrl'
-    }
+  bindings: {
+    message: '=',
+    onMessageChange: '='
+  }
 })
