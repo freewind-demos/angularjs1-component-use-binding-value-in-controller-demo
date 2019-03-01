@@ -15,6 +15,9 @@ app.component('helloComponent', {
   },
   controller: function () {
     console.log('this.message: ', this.message);
+    this.$onInit = () => {
+      console.log('$onInit this.message: ', this.message);
+    }
     setTimeout(() => {
       console.log('setTimeout this.message: ', this.message);
     }, 0)
