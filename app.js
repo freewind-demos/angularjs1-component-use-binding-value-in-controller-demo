@@ -2,19 +2,21 @@ const app = angular.module('app', [])
 
 app.controller('MyController', function ($scope) {
   $scope.message = 'Hello'
-  $scope.onMessageChange = (message) => {
-    console.log("Message changed to:", message);
-  }
 })
 
 app.component('helloComponent', {
   template: `
     <div>
-        Message: <input type="text" ng-model="$ctrl.message" ng-change="$ctrl.onMessageChange($ctrl.message)"/>
+        Message: {{$ctrl.message}}
     </div>
     `,
   bindings: {
-    message: '<',
-    onMessageChange: '<'
+    message: '<'
+  },
+  controller: function () {
+    console.log('this.message: ', this.message);
+    setTimeout(() => {
+      console.log('setTimeout this.message: ', this.message);
+    }, 0)
   }
 })
