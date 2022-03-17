@@ -6,7 +6,7 @@ AngularJS1 Component Use Binding Value in Controller Demo
 
 ```
 npm install
-npm run demo
+npm start
 ```
 
 在浏览器console中显示：
